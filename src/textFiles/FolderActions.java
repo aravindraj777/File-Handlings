@@ -7,6 +7,7 @@ public class FolderActions {
     public static void main(String[] args) {
         String folderPath = "D:\\bidding-system\\myfiles";
         createFolder(folderPath);
+        System.out.println(isFolderExists(folderPath));
     }
 
     private static void createFolder(String folderPath){
@@ -16,5 +17,10 @@ public class FolderActions {
             folder.mkdir();
             System.out.println("Folder created "+ folderPath);
         }
+    }
+
+    private static boolean isFolderExists(String folderPath){
+        File folder = new File(folderPath);
+        return folder.exists();
     }
 }
