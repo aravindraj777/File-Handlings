@@ -10,6 +10,7 @@ public class FolderActions {
         createFolder(folderPath);
         System.out.println(isFolderExists(folderPath));
         renameFolder(folderPath,newFolderPath);
+        deleteFolder(newFolderPath);
     }
 
     private static void createFolder(String folderPath){
@@ -32,6 +33,17 @@ public class FolderActions {
         if (oldFolder.exists()){
             oldFolder.renameTo(newFolder);
             System.out.println("Folder Renamed to "+ newPath);
+        }
+    }
+
+    private static void deleteFolder(String folderPath){
+        File folder = new File(folderPath);
+        if (folder.exists()){
+            for (File file : folder.listFiles()){
+                file.delete();
+            }
+            folder.delete();
+            System.out.println("Folder deleted "+ folderPath);
         }
     }
 }
